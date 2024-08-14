@@ -1,0 +1,437 @@
+h1 {
+    color: #8ea85d; /* Change 'blue' to any color you prefer */
+}
+
+.intro-container {
+    width: 70%; /* Adjust width as needed */
+    max-width: 800px; /* Optionally set a max-width for larger screens */
+    margin: 100px auto auto; /* Center horizontally with auto margins, and adjust top margin to avoid overlap */
+    padding: 20px;
+    background-color: #f7fcea;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative; /* Ensures absolute positioning of child elements is relative to this container */
+    padding-bottom: 30px; /* Adjust padding to prevent content overlap with the image */
+}
+
+.intro-container .image-wrapper {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center images */
+    justify-content: center; /* Center images horizontally */
+    gap: 10px; /* Adjust spacing between images */
+    margin-bottom: 20px; /* Space between the image row and the GIF */
+}
+
+.intro-container img.intro-image {
+    width: 20%; /* Adjust this percentage to control the size of the main image */
+    max-width: 25%; /* Ensures image does not overflow the container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Optional: adds rounded corners to the image */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.intro-container img.intro-turnip {
+    width: 50%; /* Adjust this percentage to control the size of the main image */
+    max-width: 50%; /* Ensures image does not overflow the container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Optional: adds rounded corners to the image */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.intro-container img.intro-kuni {
+    width: 20%; /* Adjust this percentage to control the size of the main image */
+    max-width: 20%; /* Ensures image does not overflow the container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Optional: adds rounded corners to the image */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.aligned-image {
+    width: 20%;
+    max-width: 20%;
+    float: right;
+    margin-left: 10px; /* Adjust margin as needed */
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.aligned-image:hover {
+    transform: rotate(5deg); /* Adjust the degree of rotation to achieve the desired tilt effect */
+}
+
+.intro-container img.intro-image:hover {
+    transform: rotate(5deg); /* Adjust the degree of rotation to achieve the desired tilt effect */
+}
+
+.intro-container img.side-image {
+    width: 10%; /* Adjust the size of the side images */
+    max-width: 150px; /* Optional: Set a maximum width for the side images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: add rounded corners to the side images */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.intro-container img.side-image:hover {
+    transform: rotate(5deg); /* Adjust the degree of rotation to achieve the desired tilt effect */
+}
+
+.intro-container img.intro-gif {
+    display: block; /* Ensure it is displayed as a block-level element below the images */
+    width: 20%; /* Adjust this percentage to control the size of the GIF */
+    max-width: 200px; /* Optional: Set a maximum width for the GIF */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px auto; /* Center the GIF and add spacing above and below */
+    border-radius: 10px; /* Optional: add rounded corners to the GIF */
+}
+
+.intro-container .icon-wrapper {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center icons horizontally */
+    gap: 20px; /* Adjust spacing between icons */
+    margin-top: 20px; /* Space between the text and icons */
+}
+
+.intro-container img.icon {
+    width: 50px; /* Adjust size of icons */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.intro-container h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.intro-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 5px;
+}
+
+.icon-wrapper {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center icons horizontally */
+    gap: 20px; /* Adjust spacing between icons */
+    margin-top: 20px; /* Space between the text and icons */
+}
+
+.icon-wrapper a {
+    display: inline-block; /* Ensure anchor tags behave like inline-blocks */
+}
+
+.icon {
+    width: 50px; /* Adjust size */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Slightly scale up on hover */
+}
+
+.intro-text {
+    text-align: center; /* Center text and images within the container */
+    color: #607942;
+    transition: opacity 0.5s ease, height 0.5s ease;
+    font-size: 20px;
+}
+
+.art-text {
+    font-size: 15px;
+    margin-left: 100px;
+    max-width: 550px;
+    color: #607942;
+    margin-right: 70px;
+    text-align: left;
+}
+
+.art-text ul {
+    list-style-type: disc;
+}
+
+/* Initial state of the container */
+.page-container {
+    opacity: 1;
+    height: auto;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+/* State when transitioning */
+.page-container.transitioning {
+    opacity: 0;
+    height: 0;
+}
+
+/* Full-screen loading screen */
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(245, 244, 213);
+    background-image: url('kuniloading.png'); /* Path to your background image */
+    background-size: contain; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+/* Loader animation */
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #8ea85d; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+@media (max-width: 1024px) {
+    .intro-container {
+        background-color: rgba(white, 0.2);
+        box-shadow: none;
+
+        width: 100%;
+        margin: 64px 0;
+        padding: 0;
+    }
+}
+
+/* Animation keyframes */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading image */
+.loading-image {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+}
+
+#drift-image {
+    cursor: pointer;
+    transition: bottom 0.3s ease;
+    width: 10%;
+}
+
+@media (max-width: 608px) {
+    .default-menu{      /* Hides Default Nav Bar Menu */
+        display: none;
+    }
+
+    #menu-btn{          /* Display Dropdown Button */
+        display: flex;
+        position: fixed;
+    }
+
+    /* Sets Dropdown Design Similar to <a> elements */
+    #menu-btn {         
+        color: #000;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        padding: 8px 16px; /* Adjust padding for larger clickable area */
+        background-color: var(--secondary);
+        border-radius: 20px;
+        transition: background-color, color, transform 0.3s ease;
+    }
+
+    #menu-btn:hover {
+        background-color: #607942;
+        color: #fff;
+        transform: scale(1.1);
+    }
+    
+    .dropdown-menu{
+        list-style-type: none;
+        margin-top: 50px;
+        position: fixed;
+        display: none;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .dropdown-menu li{
+        margin: 7px 2px;    /* Sets margin for each links */
+    }
+    
+    .dropdown-menu a {
+        color: #000;
+        text-decoration: none;
+        font-size: 12px;
+        padding: 8px 16px; /* Adjust padding for larger clickable area */
+        background-color: var(--secondary);
+        border-radius: 20px;
+        transition: background-color, color, transform 0.3s ease;
+    }
+    
+    .dropdown-menu a:hover {
+        background-color: #607942;
+        color: #fff;
+        transform: scale(1.1);
+    }
+
+    .intro-container {
+        width: 80%; /* Adjust width as needed */
+        max-width: 800px; /* Optionally set a max-width for larger screens */
+        margin: 100px auto auto; /* Center horizontally with auto margins, and adjust top margin to avoid overlap */
+        padding: 20px;
+        background-color: #f7fcea;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        text-align: center; /* Center text and images within the container */
+    }
+    
+    .intro-container .image-wrapper {
+        display: flex; /* Use flexbox for layout */
+        align-items: center; /* Vertically center images */
+        justify-content: center; /* Center images horizontally */
+        gap: 20px; /* Adjust spacing between images */
+        margin-bottom: 20px; /* Space between the image row and the GIF */
+    }
+    
+    .intro-container img.intro-image {
+        width: 30%; /* Adjust this percentage to control the size of the main image */
+        max-width: 100%; /* Ensures image does not overflow the container */
+        height: auto; /* Maintains aspect ratio */
+        border-radius: 10px; /* Optional: adds rounded corners to the image */
+        transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    }
+    
+    .intro-container img.intro-turnip {
+        width: 50%; /* Adjust this percentage to control the size of the main image */
+        max-width: 50%; /* Ensures image does not overflow the container */
+        height: auto; /* Maintains aspect ratio */
+        border-radius: 10px; /* Optional: adds rounded corners to the image */
+        transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    }
+    
+    .intro-container img.intro-kuni {
+        width: 20%; /* Adjust this percentage to control the size of the main image */
+        max-width: 20%; /* Ensures image does not overflow the container */
+        height: auto; /* Maintains aspect ratio */
+        border-radius: 10px; /* Optional: adds rounded corners to the image */
+        transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    }
+    
+    .aligned-image {
+        width: 20%;
+        max-width: 20%;
+        float: right;
+        margin-left: 10px; /* Adjust margin as needed */
+        margin-bottom: 10px; /* Adjust margin as needed */
+    }
+    
+    .aligned-image:hover {
+        transform: rotate(5deg); /* Adjust the degree of rotation to achieve the desired tilt effect */
+    }
+    
+    .intro-container img.intro-image:hover {
+    transform: rotate(5deg); /* Adjust the degree of rotation to achieve the desired tilt effect */
+}
+    
+.intro-container img.side-image {
+    width: 20%; /* Adjust the size of the side images */
+    max-width: 150px; /* Optional: Set a maximum width for the side images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: add rounded corners to the side images */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+    
+    .intro-container img.side-image:hover {
+        transform: rotate(5deg); /* Adjust the degree of rotation to achieve the desired tilt effect */
+    }
+    
+    .intro-container img.intro-gif {
+        display: block; /* Ensure it is displayed as a block-level element below the images */
+        width: 50%; /* Adjust this percentage to control the size of the GIF */
+        max-width: 200px; /* Optional: Set a maximum width for the GIF */
+        height: auto; /* Maintain aspect ratio */
+        margin: 10px auto; /* Center the GIF and add spacing above and below */
+        border-radius: 10px; /* Optional: add rounded corners to the GIF */
+    }
+    
+    .intro-container .icon-wrapper {
+        display: flex; /* Use flexbox for layout */
+        justify-content: center; /* Center icons horizontally */
+        gap: 20px; /* Adjust spacing between icons */
+        margin-top: 20px; /* Space between the text and icons */
+    }
+    
+    .intro-container img.icon {
+        width: 30px; /* Adjust size of icons */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+    .intro-container h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    
+    .intro-container p {
+        font-size: 12px;
+        line-height: 1.6;
+        margin-top: 5px;
+    }
+    
+    .intro-container pre {
+        font-size: 12px;
+    }
+    
+    .icon-wrapper {
+        display: flex; /* Use flexbox for layout */
+        justify-content: center; /* Center icons horizontally */
+        gap: 20px; /* Adjust spacing between icons */
+        margin-top: 20px; /* Space between the text and icons */
+    }
+    
+    .icon-wrapper a {
+        display: inline-block; /* Ensure anchor tags behave like inline-blocks */
+    }
+    
+    .icon {
+        width: 50px; /* Adjust size */
+        height: auto; /* Maintain aspect ratio */
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+    
+    .icon:hover {
+        transform: scale(1.1); /* Slightly scale up on hover */
+    }
+    
+    .intro-text {
+        text-align: center; /* Center text and images within the container */
+        color: #607942;
+        transition: opacity 0.5s ease, height 0.5s ease;
+        font-size: 11px;
+    }
+    
+    .art-text {
+        margin-left: 50px;
+        max-width: 600px;
+        color: #607942;
+        margin-right: 50px;
+        text-align: left;
+        font-size: 12px;
+    }
+    
+    .art-text ul {
+        list-style-type: disc;
+    }
+
+
+
+}
